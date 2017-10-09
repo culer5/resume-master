@@ -1,0 +1,272 @@
+/* global Highcharts */
+
+var bio = {
+    "name": "Scott Dickinson",
+    "role": "Web & People Developer",
+    "contacts": {
+        "mobile": "256-714-1803",
+        "email": "culer5@.gmail.com",
+        "github": "culer5",
+        "twitter": "@ratpack30s",
+        "location": "Huntsville"
+    },
+    "welcomeMessage": "The pessimist sees difficulty in every opportunity.The optimist sees the opportunity in every difficulty. \u2014 Churchill",
+    "skills": [
+        "Leader", " Problem-solver", " Teacher", " Web Developer"
+    ],
+    "bioPic": "images/me.jpg"
+};
+
+var name = bio.name;
+var formattedName = HTMLheaderName.replace("%data%", name);
+
+var role = bio.role;
+var formattedRole = HTMLheaderRole.replace("%data%", role);
+
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+$("#main").append(internationalizeButton);
+
+var mobile = bio.contacts.mobile;
+var formattedMobile = HTMLmobile.replace("%data%", mobile);
+$("#topContacts").append(formattedMobile);
+
+var email = bio.contacts.email;
+var formattedEmail = HTMLemail.replace("%data%", email);
+$("#topContacts").append(formattedEmail);
+
+var github = bio.contacts.github;
+var formattedGithub = HTMLgithub.replace("%data%", github);
+$("#topContacts").append(formattedGithub);
+
+var twitter = bio.contacts.twitter;
+var formattedTwitter = HTMLtwitter.replace("%data%", twitter);
+$("#topContacts").append(formattedTwitter);
+
+var _location = bio.contacts.location;
+var formattedLocation = HTMLlocation.replace("%data%", _location);
+$("#topContacts").append(formattedLocation);
+
+var bioPic = bio.bioPic;
+var formattedBioPic = HTMLbioPic.replace("%data%", bioPic);
+$("#header").append(formattedBioPic);
+
+var welcomeMessage = bio.welcomeMessage;
+var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", welcomeMessage);
+$("#header").append(formattedWelcomeMessage);
+
+
+if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+    for (var i = 0, len = bio.skills.length; i < len; i++) {
+        var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
+        $("#skills").append(formattedSkills);
+    }
+}
+
+
+var education = {
+    "schools": [
+        {
+            "schoolName": "Troy University",
+            "schoolDegree": "BS",
+            "schoolDates": "In Progress",
+            "schoolLocation": "Troy, AL",
+            "schoolMajor": "Applied Computer Science"
+        },
+        {
+            "schoolName": "Faulkner University",
+            "schoolDegree": "BS",
+            "schoolDates": "1993-1995",
+            "schoolLocation": "Huntsville, AL",
+            "schoolMajor": "Management of Human Resources"
+        },
+        {
+            "schoolName": "Marion Military Institute",
+            "schoolDegree": "AAS",
+            "schoolDates": "1986-1988",
+            "schoolLocation": "Marion, AL",
+            "schoolMajor": "General Education"
+        }
+
+    ],
+    "onlineCourses": [
+		{ "school": "Udacity",
+		"title": "Intro to HTML & CSS",
+		"completed": "April 2017",
+		"url": "https://www.udacity.com/course/intro-to-html-and-css--ud304"
+		}
+             ]  
+        };
+
+
+
+
+
+var work = {
+    "jobs": [{
+            "employer": "AT&T",
+            "title": "Area Manager",
+            "location": "Huntsville, AL, US",
+            "datesWorked": "2007 - current",
+            "description": "Operations manager with experience of successfully coordinating the activities various departments"
+        },
+        {
+            "employer": "Schwarze Industries",
+            "title": "Project Manager",
+            "location": "Huntsville,AL, US",
+            "datesWorked": "1999-2007",
+            "description": "Improved bid to work structure awareness to reduce underbidding by 20%. \nIncorporated efficiency performance measurements into individual reviews to relate company successes to career success."
+        },
+        {
+            "employer": "Yum!",
+            "title": "General Manager",
+            "location": "Huntsville, AL, US",
+            "datesWorked": "1996-1999",
+            "description": "Project discovery and planning: Guide work from client needs and idea to goals and delivery. \nPull together team leaders and account staff to research and define new products and budget. \nBuild and delegate work plans, communicating progress to account executives."
+        }
+    ]
+};
+
+var projects = {
+	"projects": [
+		{
+			"title": "HTML5 Canvas Game",
+			"datesWorked": "in progress",
+			"description": "Created an online game using HTML5 Canvas as part of Udacity's Front-End Web Developer " +
+			"Nanodegree.",
+			"images": ["images/frogger.jpg"]
+
+		},
+		{
+			"title": "Online Portfolio",
+			"datesWorked": "October 2017",
+			"description": "Created an online portfolio of work as part of Udacity's Front-End Web Developer " +
+			"Nanodegree.",
+			"images": ["images/goodatstuff.jpg"]
+		}
+	]
+};
+
+$(document).click(function(loc) {
+  var x = loc.pageX;
+  var y = loc.pageY;
+  
+  logClicks(x,y);
+});
+
+
+
+
+
+
+
+
+function displayWork() {
+
+    if (work.jobs.length > 0) {
+
+        $("#workExperience").append(HTMLworkStart);
+        for (var i = 0, len = work.jobs.length; i < len; i++)
+         {
+            var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
+            var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
+            var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
+            var formattedDatesWorked = HTMLworkDates.replace("%data%", work.jobs[i].datesWorked);
+            var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
+
+            var formattedEmployerWorkTitle = formattedEmployer + formattedWorkTitle;
+
+            $(".work-entry:last").append(formattedEmployerWorkTitle);
+            $(".work-entry:last").append(formattedWorkLocation);
+            $(".work-entry:last").append(formattedDatesWorked);
+            $(".work-entry:last").append(formattedWorkDescription);
+        }
+
+    }
+
+}
+displayWork();
+
+function displayEducation() {
+    $("#Education").append(HTMLschoolStart);
+    if (education.schools.length > 0) {
+        for (var i = 0, len = education.schools.length; i < len; i++)
+        {
+            $("#education").append(HTMLschoolStart);
+
+            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[i].schoolName).replace("#", education.schools[i].url);
+            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].schoolDegree);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].schoolDates);
+            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].schoolLocation);
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].schoolMajor);
+
+
+            $(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
+            $(".education-entry:last").append(formattedSchoolDates);
+            $(".education-entry:last").append(formattedSchoolLocation);
+            $(".education-entry:last").append(formattedSchoolMajor);
+        }
+    if(education.onlineCourses.length > 0) {
+			$("#education").append(HTMLonlineClasses);
+                        for (var i = 0, len = education.onlineCourses.length; i < len; i++)
+			{				
+				$("#education").append(HTMLschoolStart);
+				var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[i].url);
+				var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+				var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].completed);
+				var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url).replace("#", education.onlineCourses[i].url);
+
+				$(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
+				$(".education-entry:last").append(formattedOnlineDates);
+				$(".education-entry:last").append(formattedOnlineURL);
+			}    
+    }
+
+   }
+};
+displayEducation();
+
+projects.display = function() {
+	if(projects.projects.length > 0) {
+            for (var i = 0, len = education.schools.length; i < len; i++)
+		 {
+			$("#projects").append(HTMLprojectStart);
+
+			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
+			var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].datesWorked);
+			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+
+			$(".project-entry:last").append(formattedProjectTitle);
+			$(".project-entry:last").append(formattedProjectDates);
+			$(".project-entry:last").append(formattedProjectDescription);
+
+			for(img in projects.projects[i].images) {
+				var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
+				$(".project-entry:last").append(formattedProjectImage);
+			}
+			
+
+		}
+	}
+};
+
+projects.display();
+
+function inName(name) {
+	name = name.trim().split(" ");
+	console.log(name);
+	name[1]=name[1].toUpperCase();
+	name[0]=name[0].toLowerCase();
+
+	return name[0] + " "+name[1];
+}
+
+/**
+ * Skills Chart
+ */
+
+
+
+
+$('#mapDiv').append(googleMap);
