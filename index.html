@@ -10,13 +10,15 @@
 
   <!-- Load the page styles. -->
   <link href="css/style.css" rel="stylesheet">
-
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="js/Chart.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
 
 
   <!--
   Uncomment the <script> tag below when you're ready to add an interactive Google Map to your resume!
   -->
-<script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBehgGXPPXCZIqPWpmETpN3ygZyfZfFb6I&callback=initMap"></script>
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
@@ -38,7 +40,10 @@
     </div>
     
     </div>
-    
+	<div id="chart" class="gray">
+    <h2> My Skill Ratios</h2>;
+		<canvas id="mycanvas" width="256" height="256"></canvas>
+	</div>
     <div id="mapDiv">
       <h2>Where I've Lived and Worked</h2>
     </div>

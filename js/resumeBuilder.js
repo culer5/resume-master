@@ -17,43 +17,51 @@ var bio = {
     "bioPic": "images/me.jpg"
 };
 
-var name = bio.name;
-var formattedName = HTMLheaderName.replace("%data%", name);
 
-var role = bio.role;
-var formattedRole = HTMLheaderRole.replace("%data%", role);
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+
+
+
+
+
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+
+
+
+var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+
+
+
+var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+
+
+
+var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+
+
+
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+
+
+
+
+
+
 
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 $("#main").append(internationalizeButton);
-
-var mobile = bio.contacts.mobile;
-var formattedMobile = HTMLmobile.replace("%data%", mobile);
-$("#topContacts").append(formattedMobile);
-
-var email = bio.contacts.email;
-var formattedEmail = HTMLemail.replace("%data%", email);
-$("#topContacts").append(formattedEmail);
-
-var github = bio.contacts.github;
-var formattedGithub = HTMLgithub.replace("%data%", github);
-$("#topContacts").append(formattedGithub);
-
-var twitter = bio.contacts.twitter;
-var formattedTwitter = HTMLtwitter.replace("%data%", twitter);
-$("#topContacts").append(formattedTwitter);
-
-var _location = bio.contacts.location;
-var formattedLocation = HTMLlocation.replace("%data%", _location);
-$("#topContacts").append(formattedLocation);
-
-var bioPic = bio.bioPic;
-var formattedBioPic = HTMLbioPic.replace("%data%", bioPic);
 $("#header").append(formattedBioPic);
-
-var welcomeMessage = bio.welcomeMessage;
-var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", welcomeMessage);
 $("#header").append(formattedWelcomeMessage);
+$("#topContacts,#footerContacts").append(formattedMobile);
+$("#topContacts,#footerContacts").append(formattedEmail);
+$("#topContacts,#footerContacts").append(formattedGithub);
+$("#topContacts,footerContacts").append(formattedTwitter);
+$("#topContacts,footerContacts").append(formattedLocation);
+
 
 
 if (bio.skills.length > 0) {
@@ -63,6 +71,7 @@ if (bio.skills.length > 0) {
         $("#skills").append(formattedSkills);
     }
 }
+
 
 
 var education = {
@@ -269,4 +278,4 @@ function inName(name) {
 
 
 
-$('#mapDiv').append(googleMap);
+$('#mapDiv').append(mapDiv);
