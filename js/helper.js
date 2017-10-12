@@ -56,7 +56,8 @@ var HTMLonlineDates = '<div class="date-text">%data%</div>';
 var HTMLonlineURL = '<br><a href="#">%data%</a>';
 
 var internationalizeButton = '<button>Internationalize</button>';
-var googleMap = '<div id="map"></div>';
+var googleMap = '<div id="mapDiv"></div>';
+
 
 
 /*
@@ -91,9 +92,6 @@ $(document).click(function(loc) {
 
   logClicks(x, y);
 });
-
-
-
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
 See the documentation below for more details.
@@ -115,7 +113,7 @@ function initializeMap() {
 
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
   // <div id="map">, which is appended as part of an exercise late in the course.
-  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+   map = new google.maps.Map(document.getElementById('mapDiv'), mapOptions);
 
   /*
   locationFinder() returns an array of every location string from the JSONs
@@ -174,7 +172,8 @@ function initializeMap() {
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
-	  map.setZoom(9);
+	  
+		map.setZoom(9);
 		map.setCenter(marker.getPosition());
     });
 
@@ -246,3 +245,6 @@ window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
 map.fitBounds(mapBounds);
 });
+
+
+

@@ -264,4 +264,4 @@ function inName(name) {
 
 
 
-$('#mapDiv').append(mapDiv);
+$("mapDiv").append(googleMap);
