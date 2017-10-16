@@ -1,16 +1,12 @@
 .biopic {
-    border - radius: 50 % ;
+    border-radius: 50%;
 }
-
-#
-header > span {
-        color: #FC4A1A;
-    }
-
-    .dark {
-        background: #4ABDAC !important;
+#header > span {
+    color: #FC4A1A;
 }
-
+.dark {
+    background: #4ABDAC !important;
+}
 .images {
-  border-radius: 50%;
+    border-radius: 5%;
 }

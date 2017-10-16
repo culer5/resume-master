@@ -1,3 +1,5 @@
+//Latest Version! 10/16/2017
+
 var bio = {
     "name": "Scott Dickinson",
     "role": "Web & People Developer",
@@ -54,7 +56,7 @@ bio.display = function () {
     $("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
 
     $("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-}
+};
 
 bio.display();
 
@@ -86,7 +88,7 @@ var education = {
     "onlineCourses": [{
         "school": "Udacity",
         "title": "Intro to HTML & CSS",
-        "completed": "April 2017",
+		"dates": "April-Oct 2017",
         "url": "https://www.udacity.com/course/intro-to-html-and-css--ud304"
     }]
 };
@@ -98,22 +100,22 @@ var work = {
     "jobs": [{
             "employer": "AT&T",
             "title": "Area Manager",
-            "location": "Huntsville, AL, US",
-            "datesWorked": "2007 - current",
+            "location": "Huntsville, AL",
+            "dates": "2007 - current",
             "description": "Operations manager with experience of successfully coordinating the activities various departments"
         },
         {
             "employer": "Schwarze Industries",
             "title": "Project Manager",
-            "location": "Huntsville,AL, US",
-            "datesWorked": "1999-2007",
+            "location": "Huntsville,AL",
+            "dates": "1999-2007",
             "description": "Improved bid to work structure awareness to reduce underbidding by 20%. \nIncorporated efficiency performance measurements into individual reviews to relate company successes to career success."
         },
         {
             "employer": "Yum!",
             "title": "General Manager",
-            "location": "Huntsville, AL, US",
-            "datesWorked": "1996-1999",
+            "location": "Huntsville, AL",
+            "dates": "1996-1999",
             "description": "Project discovery and planning: Guide work from client needs and idea to goals and delivery. \nPull together team leaders and account staff to research and define new products and budget. \nBuild and delegate work plans, communicating progress to account executives."
         }
     ]
@@ -122,7 +124,8 @@ var work = {
 var projects = {
     "projects": [{
             "title": "HTML5 Canvas Game",
-            "datesWorked": "in progress",
+			"dates": "in progress",
+            //"datesWorked": "in progress",
             "description": "Created an online game using HTML5 Canvas as part of Udacity's Front-End Web Developer " +
                 "Nanodegree.",
             "images": ["images/frogger.jpg"]
@@ -130,7 +133,8 @@ var projects = {
         },
         {
             "title": "Online Portfolio",
-            "datesWorked": "October 2017",
+			"dates": "October 2017",
+           // "datesWorked": "October 2017",
             "description": "Created an online portfolio of work as part of Udacity's Front-End Web Developer " +
                 "Nanodegree.",
             "images": ["images/goodatstuff.jpg"]
@@ -149,7 +153,8 @@ function displayWork() {
             var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
             var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
             var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
-            var formattedDatesWorked = HTMLworkDates.replace("%data%", work.jobs[i].datesWorked);
+			var formattedDatesWorked = HTMLworkLocation.replace("%data%",work.jobs[i].dates);
+        
             var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
 
             var formattedEmployerWorkTitle = formattedEmployer + formattedWorkTitle;
@@ -185,12 +190,13 @@ function displayEducation() {
         }
         if (education.onlineCourses.length > 0) {
             $("#education").append(HTMLonlineClasses);
-            for (var i = 0, len = education.onlineCourses.length; i < len; i++) {
+            for (var j = 0, eLen = education.onlineCourses.length; j < eLen; j++) {
                 $("#education").append(HTMLschoolStart);
-                var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[i].url);
-                var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
-                var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].completed);
-                var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url).replace("#", education.onlineCourses[i].url);
+                var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[j].title).replace("#", education.onlineCourses[j].url);
+                var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[j].school);
+               // var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[j].completed);
+				var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[j].dates);
+                var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[j].url).replace("#", education.onlineCourses[j].url);
 
                 $(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
                 $(".education-entry:last").append(formattedOnlineDates);
@@ -199,33 +205,40 @@ function displayEducation() {
         }
 
     }
-};
+}
 displayEducation();
 
-projects.display = function () {
-    if (projects.projects.length > 0) {
-        for (var i = 0, len = projects.projects.length; i < len; i++) {
-            $("#projects").append(HTMLprojectStart);
 
-            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
-            var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].datesWorked);
-            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
 
-            $(".project-entry:last").append(formattedProjectTitle);
-            $(".project-entry:last").append(formattedProjectDates);
-            $(".project-entry:last").append(formattedProjectDescription);
 
-            for (img in projects.projects[i].images) {
-                var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
-                $(".project-entry:last").append(formattedProjectImage);
+projects.display = function() {
+
+
+    for (i = 0; i < projects.projects.length; i++) {
+        $("#projects").append(HTMLprojectStart);
+        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+        $(".project-entry:last").append(formattedProjectTitle);
+
+        var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+        $(".project-entry:last").append(formattedProjectDates);
+
+        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+        $(".project-entry:last").append(formattedProjectDescription);
+
+        /* if (projects.projects[i].images.length > 0)*/
+        {
+            for (y = 0; y < projects.projects[i].images.length; y++) {
+                var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[i].images[y]);
+                $(".project-entry:last").append(formattedProjectImages);
+
             }
-
-
         }
+
     }
 };
 
 projects.display();
+
 
 function inName(name) {
     name = name.trim().split(" ");
